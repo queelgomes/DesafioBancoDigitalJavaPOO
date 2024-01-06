@@ -9,8 +9,6 @@ public class ProgramaBancario {
 
     public static void main(String[] args) {
         CommandExecutor commandExecutor = new CommandExecutor();
-
-        Bank bancoDigital = new Bank("Banco Digital New Tech");
         Scanner sc = new Scanner(System.in);
 
         while(true) {

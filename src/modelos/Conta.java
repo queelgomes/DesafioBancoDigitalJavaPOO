@@ -1,7 +1,5 @@
 package modelos;
 
-import principal.ProgramaBancario;
-
 import java.util.Scanner;
 
 public abstract class Conta{
@@ -29,16 +27,31 @@ public abstract class Conta{
         return numero;
     }
 
+    public int getAgencia() {
+        return agencia;
+    }
 
     public void sacar(double valor) {
-        saldo -= valor;
+        if(saldo >= valor){
+            saldo -= valor;
+            System.out.println("Saque efetuado com sucesso!");
+        } else {
+            System.out.printf("Saldo insuficiente. Valor disponivel para saque R$%.2f.\n", saldo);
+        }
     }
-    public void depositar(double valor) {
+    public void depositar(double valor, int agencia) {
         saldo += valor;
+        System.out.printf("Valor de R$ %.2f depositado com sucesso na Agencia %d Conta %d.", valor, agencia, numero);
     }
-    public void transferir(double valor, Conta contaDestino) {
-        this.sacar(valor);
-        contaDestino.depositar(valor);
+    public void transferir(double valor, Conta contaDestino, int agencia) {
+        if(saldo >= valor){
+            this.sacar(valor);
+            if (contaDestino.getAgencia() == agencia){
+                contaDestino.depositar(valor, agencia);
+            }
+        } else {
+            System.out.printf("Saldo insuficiente. Valor disponivel para transferência R$%.2f.\n", saldo);
+        }
     }
 
 
