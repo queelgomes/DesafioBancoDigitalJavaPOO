@@ -22,11 +22,12 @@ public class Bank {
     public void criarContaCorrente(){
         Cliente cliente = new Cliente();
         this.accounts.add(new ContaCorrente(cliente));
-
+        System.out.println("Conta Corrente criada com sucesso!");
     }
     public void criarContaPoupanca(){
         Cliente cliente = new Cliente();
         this.accounts.add(new ContaPoupanca(cliente));
+        System.out.println("Conta Poupança criada com sucesso!");
     }
     public void consultarContas(){
         for(Conta c: accounts){
